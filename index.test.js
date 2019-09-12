@@ -61,31 +61,33 @@ const testArrayWithNull = [
 ];
 
 
-test('Call myFunction with an empty array, if for some reason it is not populated', () => {
-    expect(myFunction([], filters, sort)).toBeDefined();
-});
-
-test('Call myFunction with an empty filters, if for some reason it is not populated', () => {
-    expect(myFunction(a, [], sort)).toEqual(a);
-});
-
-test("Array sort don used in function, call with empty array don't change the result", () => {
-    expect(myFunction(a, filters, [])).toEqual(result);
-});
-
-test('Call myFunction with correct data. Cleanliness check', () => {
-    const localResult = myFunction([], filters, sort);
-    expect(myFunction([], filters, sort)).toEqual(localResult);
-});
-
-test('Call myFunction for testing of sort', () => {
-    expect(myFunction(testArray, filters, sort)).toEqual(result);
-});
-
-test('Call myFunction with array where some of fields is null', () => {
-    expect(myFunction(testArrayWithNull, filters, sort)).toBeDefined();
-});
-
-test('Call myFunction with filters where some of fields in array is null', () => {
-    expect(() => { myFunction(a, filtersWithNull, sort) }).toThrow();
-});
+describe('Function myFunction', () => {
+    test('call with an empty array, if for some reason it is not populated', () => {
+        expect(myFunction([], filters, sort)).toBeDefined();
+    });
+    
+    test('call with an empty filters, if for some reason it is not populated', () => {
+        expect(myFunction(a, [], sort)).toEqual(a);
+    });
+    
+    test("Array sort don used in function, call with empty array don't change the result", () => {
+        expect(myFunction(a, filters, [])).toEqual(result);
+    });
+    
+    test('call with correct data. Cleanliness check', () => {
+        const localResult = myFunction([], filters, sort);
+        expect(myFunction([], filters, sort)).toEqual(localResult);
+    });
+    
+    test('call for testing of sort', () => {
+        expect(myFunction(testArray, filters, sort)).toEqual(result);
+    });
+    
+    test('call with array where some of fields is null', () => {
+        expect(myFunction(testArrayWithNull, filters, sort)).toBeDefined();
+    });
+    
+    test('call with filters where some of fields in array is null', () => {
+        expect(() => { myFunction(a, filtersWithNull, sort) }).toThrow();
+    });
+})
